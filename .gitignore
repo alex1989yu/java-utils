@@ -1,0 +1,22 @@
+HELP.md
+target/
+.mvn
+!**/src/main/**
+!**/src/test/**
+mvnw
+mvnw.cmd
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
