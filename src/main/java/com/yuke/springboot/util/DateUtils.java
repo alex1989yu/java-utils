@@ -7,6 +7,9 @@ import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.DayOfWeek;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -807,5 +810,24 @@ public class DateUtils extends PropertyEditorSupport {
         } else {
             return false;
         }
+    }
+
+    /**
+     * 当前时间是周四下午12点到19点之间
+     * @return
+     */
+    private boolean isThursdayAndAfternoon(){
+        LocalDateTime now = LocalDateTime.now();
+        DayOfWeek dayOfWeek = now.getDayOfWeek();
+        LocalTime time = now.toLocalTime();
+
+        boolean isThursday = dayOfWeek == DayOfWeek.THURSDAY;
+        boolean isAfternoon = time.isAfter(LocalTime.of(12, 0)) && time.isBefore(LocalTime.of(19, 0));
+
+        if (isThursday && isAfternoon) {
+            //System.out.println("当前时间是周四下午12点到19点之间");
+            return true;
+        }
+        return false;
     }
 }
