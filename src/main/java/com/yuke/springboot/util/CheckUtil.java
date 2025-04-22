@@ -6,6 +6,61 @@ import java.util.Collection;
 import java.util.Map;
 
 public class CheckUtil {
+    private static final String[] images = new String[]{".jpg", ".gif", ".jpeg", ".png", ".bmg"};
+
+    private static final String[] videos = new String[]{"avi","mp4","rm","rmvb"};
+
+    private static final String[] audios = new String[]{"mp3"};
+
+    /**
+     * 判断是否为图片
+     *
+     * @param str
+     * @return
+     */
+    public static boolean isImage(String str) {
+
+        for (String e : images) {
+            if (str.endsWith(e)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean notImage(String str) {
+        return !isImage(str);
+    }
+
+    /**
+     * 判断是否为视频
+     *
+     * @param str
+     * @return
+     */
+    public static boolean isVideo(String str){
+        for (String e : videos) {
+            if (str.endsWith(e)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * 判断是否为音频
+     *
+     * @param str
+     * @return
+     */
+    public static boolean isAudios(String str){
+        for (String e : audios) {
+            if (str.endsWith(e)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     /**
      * 判断集合类为空
