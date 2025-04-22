@@ -62,3 +62,4 @@ mybatis-plus:
 config:
   webservice:
     deptuser: http://localhost:8081/springboot/ws/deptUserService
+  host: http://localhost:8080
