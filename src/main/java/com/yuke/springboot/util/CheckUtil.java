@@ -4,6 +4,7 @@ import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.Collection;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 public class CheckUtil {
     private static final String[] images = new String[]{".jpg", ".gif", ".jpeg", ".png", ".bmg"};
@@ -154,5 +155,31 @@ public class CheckUtil {
      */
     public static boolean isEmpty(Object obj) {
         return null == obj;
+    }
+
+    public static boolean check(String str, String regex) {
+        return Pattern.compile(regex).matcher(str).matches();
+    }
+
+    public static boolean isDateTime(String str) {
+
+        return CheckUtilBAK.isEmpty(str) ? false
+                : check(str,
+                "^((\\d{2}(([02468][048])|([13579][26]))[\\-\\/\\s]?((((0?[13578])|(1[02]))[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])|(3[01])))|(((0?[469])|(11))[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])|(30)))|(0?2[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])))))|(\\d{2}(([02468][1235679])|([13579][01345789]))[\\-\\/\\s]?((((0?[13578])|(1[02]))[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])|(3[01])))|(((0?[469])|(11))[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])|(30)))|(0?2[\\-\\/\\s]?((0?[1-9])|(1[0-9])|(2[0-8]))))))(\\s((([0-1][0-9])|(2?[0-3]))\\:([0-5]?[0-9])((\\s)|(\\:([0-5]?[0-9])))))?$");
+    }
+
+    public static boolean notDateTime(String str) {
+        return !isDateTime(str);
+    }
+
+    public static boolean isDate(String str) {
+
+        return CheckUtilBAK.isEmpty(str) ? false
+                : check(str,
+                "^((((19|20)\\d{2})-(0?(1|[3-9])|1[012])-(0?[1-9]|[12]\\d|30))|(((19|20)\\d{2})-(0?[13578]|1[02])-31)|(((19|20)\\d{2})-0?2-(0?[1-9]|1\\d|2[0-8]))|((((19|20)([13579][26]|[2468][048]|0[48]))|(2000))-0?2-29))$");
+    }
+
+    public static boolean notDate(String str) {
+        return !isDateTime(str);
     }
 }
